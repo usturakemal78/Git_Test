@@ -25,8 +25,8 @@ public class C03_Dropdown {
     }
 
     @Test
-    public void test01() {
-        //programming languages ddm den istediğiniz 4 seçeneği seçiniz
+    public void test01() throws InterruptedException {
+        //programing languages ddm den istediğiniz 4 seceneği seçiniz
         WebElement diller = driver.findElement(By.xpath("(//select)[6]"));
         Select select = new Select(diller);
         select.selectByIndex(0);
@@ -34,37 +34,36 @@ public class C03_Dropdown {
         select.selectByIndex(3);
         select.selectByIndex(4);
         //Eğer sadece seçili olan option'ları yani seçenekleri yazdırmak istersek;
-        select.getAllSelectedOptions().forEach(w-> System.out.println(w.getText()));//-->Lambda ile
+        select.getAllSelectedOptions().forEach(t-> System.out.println(t.getText()));//-->Lambda ile
 
-        System.out.println("**********************************************");
+        System.out.println("-------------------------------");
         //for ile
-        for (WebElement e:select.getAllSelectedOptions()) {
-            System.out.println(e.getText());
+        for (WebElement w:select.getAllSelectedOptions()) {
+            System.out.println(w.getText());
         }
         //Seçeneklerden 4 tane seçtiğimizi doğrulayalım
         Assert.assertEquals(4,select.getAllSelectedOptions().size());
 
-        //Seçtiğimiz seçeneklerden ilkini yazdıralım, ilk seçeneğin Java olduğunu doğrulayalım
-        System.out.println("**********************************************");
-        System.out.println("Seçilen seçeneklerden ilki : "+select.getFirstSelectedOption().getText());
+        //Seçtiğimiz seçeneklerden ilkini yazdiralim, ilk seçeneğin Java olduğunu doğrulayalım
+        System.out.println("-----------------------------");
+        System.out.println("Seçilen Seçeneklerden İlki = "+select.getFirstSelectedOption().getText());
         Assert.assertEquals("Java",select.getFirstSelectedOption().getText());
-        bekle(3);
+        Thread.sleep(2000);
 
-        //Seçtiğimiz seçeneklerin hepsini kaldırmak için;
+        //Seçtiğimiz seçeneklerin hepsini kaldırlaım
         select.deselectAll();
 
         //sendKeys() methodu ile istediğimiz bir seçeneği gönderelim
         //diller.sendKeys("C#");
-        bekle(3);
+        bekle(2);
+
         //visibleText olarak seçim yapacağımız bir method oluşturup programming languages ddm den bir seçenek seçelim
         selectVisibleText(diller,"Java");
         bekle(2);
-
-        //Index olarak seçim yapacağımız bir method oluşturup programming languages ddm den bir seçenek seçelim
+        //index olarak seçim yapacağımız bir method oluşturup programming languages ddm den bir seçenek seçelim
         selectIndex(diller,2);
         bekle(2);
-
-        //Value olarak seçim yapacağımız bir method oluşturup programming languages ddm den bir seçenek seçelim
+        //value olarak seçim yapacağımız bir method oluşturup programming languages ddm den bir seçenek seçelim
         selectValue(diller,"js");
 
 
@@ -72,7 +71,7 @@ public class C03_Dropdown {
 
     @After
     public void tearDown() throws Exception {
-        bekle(3);
+        bekle(2);
         driver.close();
     }
 
@@ -88,7 +87,6 @@ public class C03_Dropdown {
         Select select = new Select(ddm);
         select.selectByValue(value);
     }
-
     public void bekle(int saniye){
         try {
             Thread.sleep(saniye*1000);

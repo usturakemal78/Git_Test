@@ -1,4 +1,4 @@
-package techproed.day17_Exceptions;
+package techproed.day17_Exeptions;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -65,7 +65,7 @@ public class C04_StaleElementReferenceException extends TestBase {
         driver.get("https://techproeducation.com");
         bekle(2);
         driver.findElement(By.xpath("//*[@class='eicon-close']")).click();
-        //arama kutusunda qa aratalım
+        //arama kutusunda developer aratalım
         WebElement aramaKutusu = driver.findElement(By.xpath("//*[@type='search']"));
         aramaKutusu.sendKeys("developer",Keys.ENTER);
 
@@ -74,7 +74,7 @@ public class C04_StaleElementReferenceException extends TestBase {
         /*
         org.openqa.selenium.StaleElementReferenceException: back-forward sonrasında da bu hatayı aldık
          */
-
+        //arama kutusunda "qa" aratalım
         aramaKutusu.sendKeys("qa", Keys.ENTER);
 
         //sayfa başlığının qa içerdiğini test edelim

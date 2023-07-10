@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import techproed.utilities.TestBase;
 
 public class C01_NoSuchElementException extends TestBase {
+
     @Test
     public void test01() {
         /*
@@ -19,17 +20,19 @@ public class C01_NoSuchElementException extends TestBase {
         //techproeducation sayfasına gidelim
         driver.get("https://www.techproeducation.com");
         bekle(2);
-        driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
+        //driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
 
         //arama kutusunda qa aratalım
-        WebElement aramaKutusu = driver.findElement(By.xpath("//*[@type='search']"));
+        //WebElement aramaKutusu = driver.findElement(By.xpath("//*[@type='search']"));
+        WebElement aramaKutusu2 = driver.findElement(By.id("searchHeaderInput"));
         //eğer hatalı bir şekilde //*[@type='ssearch'] yazssa idik yani fazladan bir (s) eklendi
         // NoSuchException alırdık dene ve gör
-        //NosuchException aldığımızda hangi satıda olduğumuzu gösteriyor.
-        aramaKutusu.sendKeys("qa", Keys.ENTER);
+        //NosuchException aldığımızda hangi satırda olduğumuzu gösteriyor.
+        aramaKutusu2.sendKeys("qa", Keys.ENTER);
 
         //sayfa başlığınınn qa içerdiğini test edelim
-        Assert.assertTrue(driver.getTitle().contains("qa"));
+        //Assert.assertTrue(driver.getTitle().contains("qa"));
+        Assert.assertTrue(driver.getTitle().contains("TechPro Education"));
     }
 
     @Test

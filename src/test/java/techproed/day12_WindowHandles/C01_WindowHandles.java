@@ -28,7 +28,7 @@ public class C01_WindowHandles extends TestBase {
         /*
             Bir button'a click yaptığımızda kontrolümüz dışında yeni bir sekme yada pencere açılırsa
          yeni açılan pencerenin handle değerini bilmediğim için normal getWindowHandle ile driver'imi yeni pencere
-         geçiremem. Bunu getWindowHandles() methoduyla açılan tüm pencereleri bir Set'e assign edip, ilkaçtiğimiz
+         geçiremem. Bunu getWindowHandles() methoduyla açılan tüm pencereleri bir Set'e assign edip, ilk açtiğimiz
          pencere değilse ikinci açılan yeni penceredir mantığıyla bir loop için çözebiliriz
          */
         Set<String> pencereler = driver.getWindowHandles();
@@ -45,15 +45,18 @@ public class C01_WindowHandles extends TestBase {
         String ikinciSayfaHandle = driver.getWindowHandle();
         System.out.println("İkinci Sayfa Handle Değeri : " + ikinciSayfaHandle);
         bekle(2);
+
         //  ilk sayfaya dönün ve Title'ının “The Internet” olduğunu test edin.
         driver.switchTo().window(ilkSayfaHandle);
         String ilkSayfaActualTitle = driver.getTitle();
         String ilkSayfaExpectedTitle = "The Internet";
         Assert.assertEquals(ilkSayfaExpectedTitle, ilkSayfaActualTitle);
         bekle(2);
+
         //  ikinci sayfaya tekrar geçin.
         driver.switchTo().window(ikinciSayfaHandle);
         bekle(2);
+
         //  ilk sayfaya tekrar dönün.
         driver.switchTo().window(ilkSayfaHandle);
         bekle(2);
@@ -116,7 +119,7 @@ public class C01_WindowHandles extends TestBase {
         driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
         /*
         Set ve ArrayList kullanmadan switchTo().window() methodu içine argüman olarak driver.getWindowHandles()
-        methodunu ile bütün açılan pencereli bir array olarak alıp index belirterek isteğim pencereye geçiş yapabilirim.
+        methodu ile bütün açılan pencereli bir array olarak alıp index belirterek isteğim pencereye geçiş yapabilirim.
          */
         String actualTitleNewWindow = driver.getTitle();
         String expectedTitleNewWindow = "New Window";

@@ -18,7 +18,7 @@ public class C03_FileUploadTest extends TestBase {
         dosyayı sayfaya upload yapabiliriz
         Eğer upload yada dosyaseç butonuna tıkladığınızda windows penceresi açılıyorsa, o web elemente
         sendKeys() methodu ile dosya gönderemeyebilirsiniz böyle bir durumla karşılaşırsanız
-        Robot class'ıından obje ile methodlar kullanarak bunu aşabilirsiniz.
+        Robot class'ından obje ile methodlar kullanarak bunu aşabilirsiniz.
         */
         String dosyaYolu = "C:\\Users\\USER\\Desktop\\sen.txt";
 

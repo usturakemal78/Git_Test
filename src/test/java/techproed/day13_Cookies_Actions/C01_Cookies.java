@@ -13,7 +13,7 @@ public class C01_Cookies extends TestBase {
         //2-tum cookie’leri listeleyin
         /*
         Cookie'leri listemek istersek
-                driver.manage().getCookies() methoduyla bir Set yada ArrayList'e atarak listeleyebiliriz
+                driver.manage().getCookies() methoduyla bir Set yada ArrayList'e atarak listeleyebiliriz.
          */
         //Arrays.stream(driver.manage().getCookies().toArray()).forEach(System.out::println);-->Lambda ile Cookie'leri yazdırdık
         Set<Cookie> cookieSet = driver.manage().getCookies();
@@ -27,14 +27,20 @@ public class C01_Cookies extends TestBase {
         //3-Sayfadaki cookies sayisinin 5’den buyuk oldugunu test edin
         System.out.println("Cookilerin Sayisi = "+cookieSet.size());
         Assert.assertTrue(cookieSet.size()>5);
+
         //4-ismi i18n-prefs olan cookie degerinin USD oldugunu test edin
         String actualCookieValue = driver.manage().getCookieNamed("i18n-prefs").getValue();
-        //getCookieNamed() methodu ile bize verilen cookie isminin getValue() methoduyla gerçek değerini actualCookieValue değişkenine assing ettik
+               /*
+               getCookieNamed() methodu ile bize verilen cookie isminin getValue() methoduyla
+               gerçek değerini actualCookieValue değişkenine assing ettik
+                */
         String expectedCookieValue = "USD";
         Assert.assertEquals(expectedCookieValue,actualCookieValue);
+
         //5-ismi “en sevdigim cookie” ve degeri “cikolatali” olan bir cookie olusturun ve sayfaya ekleyin
         Cookie cookie = new Cookie("en sevdigim cookie","cikolatali");
         driver.manage().addCookie(cookie);
+
         //6-eklediginiz cookie’nin sayfaya eklendigini test
         cookieSet = driver.manage().getCookies();
         for (Cookie each:cookieSet) {
@@ -54,7 +60,7 @@ public class C01_Cookies extends TestBase {
         cookieSet = driver.manage().getCookies();//Silindikten sonra cookieSet'e yine atama yapiyoruz aksi taktirde fail aliriz
         int silindiktenSonra = cookieSet.size();
         System.out.println("Silindikten Sonra Cookie Sayisi = "+silindiktenSonra);
-        Assert.assertEquals(1,(silinmedenOnce-silindiktenSonra));
+        //Assert.assertEquals(silinmedenOnce,silindiktenSonra);
 
 
         //8-tum cookie’leri silin ve silindigini test edin

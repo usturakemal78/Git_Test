@@ -30,9 +30,6 @@ public class C02_basicAuthentication extends TestBase {
        driver.findElement(By.xpath("(//a)[2]")).click();
        driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());//--> Açılan yeni pencereye geçtik
 
-
-
-
         //Başlığın Elemetal Selenium olmadığını doğrulayalım
         System.out.println("Sayfa Başlığı : "+driver.getTitle());
         Assert.assertNotEquals("Elemental Selenium",driver.getTitle());

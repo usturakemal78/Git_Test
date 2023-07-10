@@ -11,7 +11,7 @@ public class C01_Iframe extends TestBase {
     Bir HTML dökümanının içine yerletirilmiş başk bir HTML dökümanına inline frame yani IFRAME denir.
     Bir sayfada iframe varsa iframe içindeki web elementi handel edebilmek için swicTo() methodu ile ifram'e
     geçiş yapmamız gerekir . Eğer geçiş yapmassak nosuchelemetexception alırız.
-        Aletr'ten farkı alert çıktığında hiçbir webelementi locate edemeyiz. Iframe olsada locate edereiz fakat
+        Alert'ten farkı alert çıktığında hiçbir webelementi locate edemeyiz. Iframe olsada locate ederiz fakat
         handle edemeyiz.
      */
 
@@ -30,13 +30,14 @@ public class C01_Iframe extends TestBase {
 
         //Ayrica 'Applications lists' yazisinin sayfada oldugunu test edelim
         driver.switchTo().frame(0);//-->geçiş yapmazsak  Nosouchelementexception hatası alırız.
-        String ApplicationListYazisi = driver.findElement(By.xpath("//h1")).getText();
-        System.out.println(ApplicationListYazisi);
-        Assert.assertEquals("Applications lists",ApplicationListYazisi);
+        String applicationListYazisi = driver.findElement(By.xpath("//h1")).getText();
+        System.out.println(applicationListYazisi);
+        Assert.assertEquals("Applications lists",applicationListYazisi);
 
         //Son olarak sayfa başınlığında iframe yazısının görünür olduğunu test ediniz
         driver.switchTo().defaultContent();
-        driver.get(driver.getCurrentUrl());// driver.navigate().refresh() de yapılabilirdi
+        //driver.get(driver.getCurrentUrl());//bu refresh yapar
+        //driver.navigate().refresh(); //de yapılabilirdi
         WebElement iframeYazisi = driver.findElement(By.xpath("//h3"));
         Assert.assertTrue(iframeYazisi.isDisplayed());
 

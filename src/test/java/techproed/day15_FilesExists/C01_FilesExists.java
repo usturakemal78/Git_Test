@@ -21,15 +21,16 @@ public class C01_FilesExists {
         Dolayısıyla bu işleme başlamadan önce varlığını test edeceğimiz dosyanın yolunu String bir değişkene
         assing ederiz.
          */
-        //"C:/Users/USER/Desktop/TOKAL.pdf"
-        String dosyaYolu = "C:/Users/USER/Desktop/TOKAL.pdf";
+        //"C:/Users/kemal/Desktop/sen.txt"
+        String dosyaYolu = "C:/Users/kemal/Desktop/sen.txt";
         System.out.println(Files.exists(Paths.get(dosyaYolu)));//--> Dosya varsa true yoksa false döner
-        Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
+        Assert.assertFalse(Files.exists(Paths.get(dosyaYolu)));
     }
 
     @Test
     public void test02() {
-        String dosyayolu2 = "C:/metinbelgesi.txt";
+        //"C:/Users/kemal/AMDRM_Install.log"
+        String dosyayolu2 = "C:/Users/kemal/AMDRM_Install.log";
         System.out.println(Files.exists(Paths.get(dosyayolu2)));
         Assert.assertTrue(Files.exists(Paths.get(dosyayolu2)));
     }
@@ -45,16 +46,15 @@ public class C01_FilesExists {
         sisteminde bize aynı yolu vereceği için bunu da ortsk yol olarak bir Stringe assing ederiz.
          */
         String farkliYol = "";
-        String isletimSistemiAdı = System.getProperty("os.name");
-        System.out.println(isletimSistemiAdı);//İşletim sistemimizin adını verir
-        System.out.println((System.getProperty("user.home")));//--> bilgisayrımızdaki yolu verir
-        if(isletimSistemiAdı.contains("Win")){
-            farkliYol = System.getProperty("user.home");//-->Windows 11/-->
-
-        }else if(isletimSistemiAdı.contains("mac")){
-            farkliYol = "/user/aycapolatkamali";//--> mac işletim sistemi yolu
+        String isletimSistemiAdi = System.getProperty("os.name");//İşletim sistemimizin adını verir
+        System.out.println(isletimSistemiAdi);
+        System.out.println((System.getProperty("user.home")));//--> Bilgisayrımızdaki kullanıcı yolu verir
+        if(isletimSistemiAdi.contains("Win")){
+            farkliYol = System.getProperty("user.home");//-->Win 11
+        }else if(isletimSistemiAdi.contains("mac")){
+            farkliYol = "/Users/aycapolatkamali";//--> Mac işletim sistemi yolu
         }
-        String ortakYol = "/Desktop/TOKAL.pdf";
+        String ortakYol = "/kemal/Desktop/sen.txt";
         String dosyaYolu = farkliYol+ortakYol;
         System.out.println(Files.exists(Paths.get(dosyaYolu)));
         Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
@@ -71,7 +71,7 @@ public class C01_FilesExists {
         }catch (IOException e){
             throw new RuntimeException(e);
         }
-        Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
+        Assert.assertFalse(Files.exists(Paths.get(dosyaYolu)));
         /*
         Her seferinde test ettiğimiz sayfada download işlemi yapılıyorsa gereksiz dosya kalabalığını önlemek için
         yukardaki delete işlemini kullanabiliriz

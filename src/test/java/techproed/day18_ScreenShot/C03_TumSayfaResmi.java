@@ -12,7 +12,7 @@ public class C03_TumSayfaResmi extends TestBase {
         driver.get("https://techproeducation.com");
 
         //Çıkan reklamı kapatalım
-        driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
+        //driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
         bekle(2);
 
         //ve ekran görüntüsü alalım

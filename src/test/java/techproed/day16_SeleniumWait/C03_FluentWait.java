@@ -35,6 +35,7 @@ public class C03_FluentWait extends TestBase {
                 withMessage("Webelementi kontrol et");//-->hata alma durumunda konsolda bu mesajı verir--> zorunlu değil
         wait.until(ExpectedConditions.visibilityOf(helloWorldText));
 
+        Assert.assertEquals("Hello World!",helloWorldText.getText());
     }
 
     @Test
@@ -69,6 +70,8 @@ public class C03_FluentWait extends TestBase {
                 withTimeout(Duration.ofSeconds(20)).
                 pollingEvery(Duration.ofMillis(200));
         wait.until(ExpectedConditions.visibilityOf(helloWorldText));
+
+        Assert.assertEquals("Hello World!",helloWorldText.getText());
     }
 
     @Test

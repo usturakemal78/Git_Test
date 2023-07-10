@@ -11,7 +11,7 @@ public class C02_BeforeAfter {
         before methodu için setup'ı seçeriz
         test methodu için de test'i seçeriz
             junit frameworkunde testlerimizi sıralama yapabilmek için ekstra bir notasyon yoktur
-            Eğer belli bir sırlalamada çalıştırmak istersek method isimlerini alfabetik ve sayıl olarak belirmemiz gerekir.
+            Eğer belli bir sırlalamada çalıştırmak istersek method isimlerini alfabetik ve sayısal olarak belirtmemiz gerekir.
             aşağıda test sıralamsı sıralama değiştiği için bakabillirsin...
          */
     @After

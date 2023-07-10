@@ -24,6 +24,7 @@ public class C03_NullPointerException {
         driver = new ChromeDriver(); normalde bu atamayı yapmamız gerekir. Bu atamayı yapmadığımız taktirde yada
         unuttuğumuz zaman nullpointerexception hatası alırız
          */
+
         driver.get("https://amazon.com");//-->java.lang.NullPointerException
     }
 
@@ -35,7 +36,8 @@ public class C03_NullPointerException {
 
     @Test
     public void test03() {
+
         actions.doubleClick().perform();//-->java.lang.NullPointerException
     }
 }
-//tamamdir, iyi dersler eline koluna sağlık teşekkür ederim
+    //tamamdir, iyi dersler eline koluna sağlık teşekkür ederim

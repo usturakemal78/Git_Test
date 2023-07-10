@@ -12,11 +12,11 @@ import java.nio.file.Paths;
 public class C02_FileDownloadTest extends TestBase {
     @Test
     public void test01() {
-        String filePath = "C:\\Users\\USER\\Downloads\\b10 all test cases, code.docx";
+        String filePath = "C:\\Users\\kemal\\Downloads\\b10 all test cases, code.docx";
         try{
             Files.delete(Paths.get(filePath));
         }catch (IOException e){
-            System.out.println("Dosya Bulunamadı : ");
+            System.out.println("Dosya Bulunamadı");
 
         /*
         Dosyayı daha önce indirdiğimiz için ve tekrar testi çalıştırdığımızda yine aynı dosyayı indireceği için
@@ -35,7 +35,7 @@ public class C02_FileDownloadTest extends TestBase {
          */
         bekle(2);//--> İndrime süresini göz önünde bulundurarak bekle koyduk
         //Dosyanın başarıyla indirilip indirilmediğini test edelim
-        String dosyaYolu = "C:\\Users\\USER\\Downloads\\b10 all test cases, code.docx";
+        String dosyaYolu = "C:\\Users\\kemal\\Downloads\\b10 all test cases, code.docx";
         Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 
 

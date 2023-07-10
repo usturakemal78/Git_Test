@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class TestBase {
+    public abstract class TestBase {
     protected ExtentReports extentReports; //-->Raporlamayı başlatmak için kullanılan class
     protected ExtentHtmlReporter extentHtmlReporter;//-->Raporu HTML formatında düzenler
     protected ExtentTest extentTest;//--> Test adınlarına eklemek istediğimiz bilgileri bu class ile oluştururuz
@@ -34,19 +35,29 @@ public abstract class TestBase {
     TestBase testBase = new TestBase(); yani bu şekilde obje oluşturmanın önüne geçmiş oluruz.
     Bu class'a extends yaptığımız test class'larından ulaşabiliriz
      */
-    protected WebDriver driver;
 
-    @Before
-    public void setUp() throws Exception {
+        protected WebDriver driver;
+
+        @Before
+         public void setUp() throws Exception {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        }
+   /* @Before
+    public void setUp() throws Exception {
+        WebDriverManager.edgedriver().setup();
+        driver = new EdgeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
-
+*/
     @After
     public void tearDown() throws Exception {
-        bekle(3);
+        bekle(1);
+        extentReports=new ExtentReports();
+        extentReports.flush();
         //driver.quit();
     }
 
@@ -88,21 +99,25 @@ public abstract class TestBase {
 
     //AcceptAlert
     public void acceptAlert() {
+
         driver.switchTo().alert().accept();
     }
 
     //DismissAlert
     public void dismissAlert() {
+
         driver.switchTo().alert().dismiss();
     }
 
     //getTextAlert
     public String getTextAlert() {
+
         return driver.switchTo().alert().getText();
     }
 
     //sendKeysAlert
     public void sendKeysAlert(String text) {
+
         driver.switchTo().alert().sendKeys(text);
     }
 
@@ -193,7 +208,7 @@ public abstract class TestBase {
 
         //Raporda gözükmesini isteğimiz bilgiler için
         extentReports.setSystemInfo("Browser", browser);
-        extentReports.setSystemInfo("Tester", "Erol");
+        extentReports.setSystemInfo("Tester", "Kemal");
         extentHtmlReporter.config().setDocumentTitle("Extent Report");
         extentHtmlReporter.config().setReportName(reportName);
 

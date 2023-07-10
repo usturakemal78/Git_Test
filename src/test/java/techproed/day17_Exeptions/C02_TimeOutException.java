@@ -15,7 +15,7 @@ public class C02_TimeOutException extends TestBase {
     public void test01() {
         /*
         TIME_OUT_EXCEPTION
-        Expilict wait kullanırken yanlış method yada yanlış max. bekleme süresi gibi durumlarda
+        Explicit wait kullanırken yanlış method yada yanlış max. bekleme süresi gibi durumlarda
         org.openqa.selenium.TimeoutException hatası alırız.
          */
 
@@ -28,7 +28,7 @@ public class C02_TimeOutException extends TestBase {
         //Hello World! Yazının sitede oldugunu test et
         WebElement helloWorldText = driver.findElement(By.xpath("(//h4)[2]"));
         //Locate'ini aldığımız helloWorldText webelementini görünür olana kadar explicit wait ile bekleyeceğim
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));//-->max.20 saniye belirttik
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));//-->max.20 saniye belirttik
         wait.until(ExpectedConditions.visibilityOf(helloWorldText));
         /*
         org.openqa.selenium.TimeoutException: normalde helloWorldText webelementi 5-6 saniye civarında
@@ -50,7 +50,6 @@ public class C02_TimeOutException extends TestBase {
         driver.findElement(By.xpath("//button")).click();
 
         //Hello World! Yazının sitede oldugunu test et
-        //WebElement helloWorldText = driver.findElement(By.xpath("yanlis locate"));
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("yanlisLocate")));
@@ -70,7 +69,7 @@ public class C02_TimeOutException extends TestBase {
         driver.get("https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver");
 
         //CheckBox yazan butona tıklayın
-        driver.findElement(By.xpath("//*[@id='checkbox']"));
+        driver.findElement(By.xpath("//*[@id='checkbox']")).click();
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='ch']")));
 

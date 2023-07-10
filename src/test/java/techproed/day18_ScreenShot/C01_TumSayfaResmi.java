@@ -27,7 +27,7 @@ public class C01_TumSayfaResmi extends TestBase {
 
         bekle(2);
         //Çıkan reklamı kapatalım
-        driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
+       // driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
 
         //Ve ekran görüntüsünü alalım
         /*
@@ -49,7 +49,7 @@ public class C01_TumSayfaResmi extends TestBase {
 
         bekle(2);
         //Çıkan reklamı kapatalım
-        driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
+        //driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
 
         //Ve ekran görüntüsünü alalım
         TakesScreenshot ts = (TakesScreenshot) driver;
@@ -68,7 +68,7 @@ public class C01_TumSayfaResmi extends TestBase {
 
         bekle(2);
         //Çıkan reklamı kapatalım
-        driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
+        //driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
 
         //Ve ekran görüntüsünü alalım
         /*
